@@ -1,0 +1,122 @@
+[
+  {
+    "id": "E001",
+    "name": "Samsung Galaxy M13",
+    "category": "Electronics",
+    "type": "Mobile",
+    "brand": "Samsung",
+    "price": 9999,
+    "currency": "INR",
+    "stock": true,
+    "rating": 4.3,
+    "image": "images/m13.jpg"
+  },
+  {
+    "id": "E002",
+    "name": "Redmi Note 12",
+    "category": "Electronics",
+    "type": "Mobile",
+    "brand": "Xiaomi",
+    "price": 11999,
+    "currency": "INR",
+    "stock": true,
+    "rating": 4.4,
+    "image": "images/redmi12.jpg"
+  },
+  {
+    "id": "E003",
+    "name": "Dell Inspiron 15",
+    "category": "Electronics",
+    "type": "Laptop",
+    "brand": "Dell",
+    "price": 42999,
+    "currency": "INR",
+    "stock": true,
+    "rating": 4.5,
+    "image": "images/dell.jpg"
+  },
+  {
+    "id": "C001",
+    "name": "Levi's Slim Fit Jeans",
+    "category": "Clothing",
+    "type": "Jeans",
+    "brand": "Levi's",
+    "price": 1799,
+    "currency": "INR",
+    "stock": true,
+    "rating": 4.2,
+    "image": "images/levis.jpg"
+  },
+  {
+    "id": "C002",
+    "name": "Nike Running Shoes",
+    "category": "Clothing",
+    "type": "Shoes",
+    "brand": "Nike",
+    "price": 2999,
+    "currency": "INR",
+    "stock": true,
+    "rating": 4.6,
+    "image": "images/nike.jpg"
+  },
+  {
+    "id": "S001",
+    "name": "Parker Jotter Ball Pen",
+    "category": "Stationery",
+    "type": "Pen",
+    "brand": "Parker",
+    "price": 120,
+    "currency": "INR",
+    "stock": true,
+    "rating": 4.1,
+    "image": "images/parker.jpg"
+  },
+  {
+    "id": "S002",
+    "name": "Classmate Notebook A4",
+    "category": "Stationery",
+    "type": "Notebook",
+    "brand": "Classmate",
+    "price": 65,
+    "currency": "INR",
+    "stock": true,
+    "rating": 4.3,
+    "image": "images/classmate.jpg"
+  },
+  {
+    "id": "G001",
+    "name": "Aashirvaad Atta 5kg",
+    "category": "Grocery",
+    "type": "Atta",
+    "brand": "Aashirvaad",
+    "price": 260,
+    "currency": "INR",
+    "stock": true,
+    "rating": 4.5,
+    "image": "images/aashirvaad.jpg"
+  },
+  {
+    "id": "G002",
+    "name": "Fortune Sunflower Oil 1L",
+    "category": "Grocery",
+    "type": "Oil",
+    "brand": "Fortune",
+    "price": 150,
+    "currency": "INR",
+    "stock": true,
+    "rating": 4.2,
+    "image": "images/fortune.jpg"
+  },
+  {
+    "id": "G003",
+    "name": "Amul Gold Milk 1L",
+    "category": "Grocery",
+    "type": "Milk",
+    "brand": "Amul",
+    "price": 64,
+    "currency": "INR",
+    "stock": true,
+    "rating": 4.4,
+    "image": "images/amul.jpg"
+  }
+]

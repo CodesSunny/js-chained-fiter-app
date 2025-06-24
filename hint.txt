@@ -1,0 +1,27 @@
+ if one has duplicate entries in an array..
+const list = new Set([10,40,35,40,17,10,91]);
+console.log(x)     //{10,40,35,17,91}    returns object of unique values
+console.log([...x])   //[10,40,35,17,91]   convert into array
+
+ in below array...array has objects having duplicate categories....so to find unique categoirs use Set () method over array. 
+const data=  [ 0: {id: 'E001', name: 'Samsung Galaxy M13', category: 'Electronics', type: 'Mobile', brand: 'Samsung', …}
+1: 
+{id: 'E002', name: 'Redmi Note 12', category: 'Electronics', type: 'Mobile', brand: 'Xiaomi', …}
+2: 
+{id: 'E003', name: 'Dell Inspiron 15', category: 'Electronics', type: 'Laptop', brand: 'Dell', …}
+3: 
+{id: 'C001', name: "Levi's Slim Fit Jeans", category: 'Clothing', type: 'Jeans', brand: "Levi's", …}
+4: 
+{id: 'C002', name: 'Nike Running Shoes', category: 'Clothing', type: 'Shoes', brand: 'Nike', …}
+5: 
+{id: 'S001', name: 'Parker Jotter Ball Pen', category: 'Stationery', type: 'Pen', brand: 'Parker', …}]
+
+step1: use map()method on data to return array of all categories :
+['Electronics', 'Electronics', 'Electronics', 'Clothing', 'Clothing', 'Stationery', 'Stationery', 'Grocery', 'Grocery', 'Grocery']
+.
+step2: use new Set() to create object instance of unigue values ..
+{'Electronics', 'Clothing', 'Stationery', 'Grocery'}
+
+step3: use [...] spread operator to convert object into array
+
+selectelement.selectedIndex provides index of selected options
