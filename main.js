@@ -1,123 +1,90 @@
-window.onload =()=>{
-  
-    //get all data from api
-    const getAllApiData = async()=>{
-     try{
-         const response =await fetch('data.json');
-         const data = await response.json();
-         
-        //  showCategory(data);   //send fetched data
-        //  showProductType(data);  //send fetched data
-         return data;
-        }catch(err){
-            console.log("error: ", err);
-            
+const categoryEl = document.getElementById("category");
+const typeEl = document.getElementById("product-type");
+
+//get all data from api
+const getAllApiData = async () => {
+  try {
+    const response = await fetch("data.json");
+    return await response.json();
+  } catch (err) {
+    console.log("error: ", err);
+  }
+};
+
+(async () => {
+  // load the api data
+  const data = await getAllApiData();
+
+  //------------------- working on 1st filter-category
+
+  // get all categories
+  let allCategories = [...new Set(data.map((item) => item.category))]; //initialize array to hold catagories to be received
+
+  function showCategory(parent) {
+    // display All categories
+    allCategories.forEach((category, i) => {
+      const li = document.createElement("li");
+      li.id = `cat-${i}`;
+      li.textContent = `${category} >`;
+
+      parent.appendChild(li);
+    });
+  }
+
+  // get all product types
+  function showProductTypes(selectedCategory, parent) {
+    // get filtered category types
+    let allTypes = [
+      ...new Set(
+        data
+          .filter(
+            (item) => item.category?.trim()?.toLowerCase() === selectedCategory
+          )
+          .map((item) => item.type)
+      ),
+    ];
+
+    // display unique types
+    allTypes.forEach((type, i) => {
+      const li = document.createElement("li");
+      li.id = `type-${i}`;
+      li.textContent = `${type} >`;
+
+      parent.appendChild(li);
+    });
+  }
+
+  let isCategoryOpen = false;
+  categoryEl.addEventListener("mouseenter", () => {
+    if (!isCategoryOpen) {
+      showCategory(categoryEl);
+      isCategoryOpen = true;
+
+      categoryEl.addEventListener("click", (e) => {
+        if (e.target?.tagName === "LI") {
+          const selectedCategory = e.target.textContent.split(">")[0].trim();
+
+          e.target.textContent = `${selectedCategory} <`;
+          showProductTypes(selectedCategory.toLowerCase(), typeEl);
         }
+      });
     }
-        
-    // getAllApiData();   //load fetched data 
- 
+  });
 
-    //------------------- working on 1st filter-category
+  //------------------- working on 2 filter-product type
 
-    let allCategories = [];   //initialize array to hold catagories to be received
+  typeEl.addEventListener("click", (e) => {
+    if (e.target?.tagName === "LI") {
+      const selectedType = e.target.textContent.split(">")[0].trim();
 
-    // get all categories
-    function showCategory(apiData){
-         apiData.map((item)=>{
-            allCategories.push(item.category);     //append catagories in array
-            })
+      e.target.textContent = `${selectedType} <`;
 
-         const uniqueCategoriesObj = new Set(allCategories);  //object of unique categories
-         const uniqueCategoriesArr = [...uniqueCategoriesObj];   //convert object into array
+      const filteredData = data.filter(
+        (item) =>
+          item.type?.trim()?.toLowerCase() === selectedType.toLowerCase()
+      );
 
-             // display unique categories
-        let liHtml = "";
-        uniqueCategoriesArr.map((uniqueCategory,index)=>{
-            liHtml += `
-            <li id='cat-${index}'>${uniqueCategory} <span class="hide"> > </span></li>
-            `           
-          })
-
-        categoryEl.innerHTML= liHtml;    //append lis in ul
-         
-    } 
-
-
-     // get all product types
-    function showProductTypes(apiData, selectedCategory){
-        let allTypes = []; //initialize array to hold types to be received
-        // get filtered category types
-        apiData.filter((item)=>{
-            return item.category.toLowerCase() === selectedCategory;         
-        }).map((item)=>{
-            allTypes.push(item.type);  //append related types in array
-        })       
-
-         const uniquetypesObj = new Set(allTypes);  //object of unique types
-         const uniqueTypesArr = [...uniquetypesObj];   //convert object into array
-
-             // display unique types
-        let liHtml = "";
-        uniqueTypesArr.map((uniqueType,index)=>{
-            liHtml += `
-            <li id='type-${index}'>${uniqueType} <span class="hide"> > </span></li>
-            `           
-          })
-
-        typeEl.innerHTML= liHtml;    //append lis in ul
-         
-    } 
-
-
-    const categoryEl= document.getElementById("category"); 
-    categoryEl.addEventListener("mouseover", async function(){
-        const apiData = await getAllApiData();
-        showCategory(apiData);  //send api data
-
-         categoryEl.querySelectorAll("li").forEach((item,index)=> {
-            const span= item.querySelector("span");
-            span.classList.remove("hide");
-            
-             item.addEventListener("click", ()=>{
-                // get clicked category name
-                 const selectedCategory = item.textContent.replace(">", "").trim().toLowerCase();
-                showProductTypes(apiData, selectedCategory);  //show related types
-        })
-             
-             
-        })
-        
-        
-         
-         })
-  
-
-
-    
-      //------------------- working on 2 filter-product type
-
-    //get product types
-    const typeEl= document.getElementById("product-type"); 
-    typeEl.addEventListener("mouseover", async function(){
-        const apiData = await getAllApiData();
-        showProductTypes(apiData);  //send api data
-
-        typeEl.querySelectorAll("li").forEach((item,index)=> {
-            const span= item.querySelector("span");
-            span.classList.remove("hide");
-            
-             item.addEventListener("click",()=>{
-                console.log(item,index);
-        })
-             
-             
-        })
-        
-        
-         
-         })
-
-
-}
-
+      console.log(filteredData);
+    }
+  });
+})();
