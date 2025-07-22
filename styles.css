@@ -46,7 +46,16 @@
         border-radius: 5px;
         border: none;
         list-style: none;
+        font-weight: 700;
       }
+
+     ul li {
+        display: block;
+        cursor: pointer;
+        font-weight: normal;
+    }
+
+
 
       li span{
         float: right;   /*set arrow to right end */
